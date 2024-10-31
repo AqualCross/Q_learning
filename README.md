@@ -25,7 +25,7 @@ $(s,a)\overset{f}{\rightarrow}(s',r)$
 
 a|P
 -|--
-$\underset{a}\argmax q(s,a)$|$1-\epsilon$
+$\underset{a}{\operatorname{\argmax}} q(s,a)$|$1-\epsilon$
 随机|$\epsilon$
 
 禁用explore可以设置epsilon为0,但使得可读性更高的选择是使用if语句
@@ -68,11 +68,11 @@ def step(self, action):
 ```
 ### 更新Q值
 基于Bellman Equation：
-$Q^*(s, a) = \mathbb{E}[r + \gamma \max_{a'} Q^*(s', a') | s, a]$
+$Q^*(s, a) = \mathbb{E}\[r + \gamma \max_{a'} Q^*(s', a') | s, a\]$
 
 可使用如下规则，它收敛到Q*：
 
-$Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha [r_{t+1} + \gamma \max_{a'} Q(s_{t+1}, a') - Q(s_t, a_t)]$
+$Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha \[r_{t+1} + \gamma \max_{a'} Q(s_{t+1}, a') - Q(s_t, a_t)\]$
 ```python
 def update_q_table(self, state, action, reward, next_state):
     alpha = self.alpha
