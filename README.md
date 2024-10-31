@@ -4,7 +4,7 @@
 ## 问题分析
 状态空间和动作空间均离散，可使用矩阵作为状态转移的函数
 
-$ (s,a)\overset{f}{\rightarrow}(s',r) $
+$(s,a)\overset{f}{\rightarrow}(s',r)$
 
 *理论上是这样，但是这里直接把每一步的reward都设置为-1了，
 因此矩阵中每个元素都仅仅是s'而不是(s',r)*
@@ -68,11 +68,11 @@ def step(self, action):
 ```
 ### 更新Q值
 基于Bellman Equation：
-$ Q^*(s, a) = \mathbb{E}[r + \gamma \max_{a'} Q^*(s', a') | s, a] $
+$Q^*(s, a) = \mathbb{E}[r + \gamma \max_{a'} Q^*(s', a') | s, a]$
 
 可使用如下规则，它收敛到Q*：
 
-$ Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha [r_{t+1} + \gamma \max_{a'} Q(s_{t+1}, a') - Q(s_t, a_t)] $
+$Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha [r_{t+1} + \gamma \max_{a'} Q(s_{t+1}, a') - Q(s_t, a_t)]$
 ```python
 def update_q_table(self, state, action, reward, next_state):
     alpha = self.alpha
