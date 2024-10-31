@@ -25,7 +25,7 @@ $(s,a)\overset{f}{\rightarrow}(s',r)$
 
 a|P
 -|--
-$\underset{a}\argmaxq(s,a)$|$1-\epsilon$
+$\underset{a}\argmax q(s,a)$|$1-\epsilon$
 随机|$\epsilon$
 
 禁用explore可以设置epsilon为0,但使得可读性更高的选择是使用if语句
